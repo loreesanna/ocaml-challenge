@@ -1,0 +1,1 @@
+let xor a b = if a!=b then true else false ;;
