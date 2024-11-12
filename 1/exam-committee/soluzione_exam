@@ -1,0 +1,27 @@
+type vote = StrongReject | WeakReject | WeakAccept | StrongAccept
+
+let decide_exam (judgeA : vote) (judgeB : vote) (judgeC : vote) = match (judgeA, judgeB, judgeC) with 
+  | (WeakAccept, WeakAccept, WeakAccept) 
+  | (WeakAccept, WeakAccept, StrongAccept) 
+  | (WeakAccept, StrongAccept, WeakAccept)
+  | (WeakAccept, StrongAccept, StrongAccept) 
+  | (StrongAccept, WeakAccept, WeakAccept) 
+  | (StrongAccept, StrongAccept, WeakAccept) 
+  | (StrongAccept, StrongAccept, StrongAccept) -> true
+  | (WeakAccept, WeakAccept, WeakReject) 
+  | (WeakAccept, WeakReject, WeakAccept)
+  | (WeakAccept, WeakReject, StrongAccept) 
+  | (WeakReject, WeakAccept, WeakAccept) 
+  | (WeakReject, StrongAccept, WeakAccept) 
+  | (WeakReject, StrongAccept, StrongAccept) -> true
+  | (StrongReject, WeakAccept, WeakAccept) 
+  | (WeakAccept, StrongReject, WeakAccept) 
+  | (WeakAccept, WeakAccept, StrongReject) 
+  | (StrongReject, WeakAccept, StrongAccept) 
+  | (WeakAccept, StrongReject, StrongAccept) 
+  | (WeakAccept, StrongAccept, StrongReject) 
+  | (StrongReject, StrongAccept, StrongAccept) 
+  | (StrongAccept, StrongReject, StrongAccept) 
+  | (StrongAccept, StrongAccept, StrongReject) -> false
+  | _ -> false
+
